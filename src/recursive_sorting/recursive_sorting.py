@@ -31,34 +31,30 @@
 
 arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
 def merge(left, right):
-    """Merge sort merging function."""
-
-    left_index, right_index = 0, 0
+    left_index =0
+    right_index = 0
     result = []
     while left_index < len(left) and right_index < len(right):
         if left[left_index] < right[right_index]:
             result.append(left[left_index])
-            left_index += 1
+            left_index = left_index + 1
         else:
             result.append(right[right_index])
-            right_index += 1
+            right_index = right_index + 1
 
-    result += left[left_index:]
-    result += right[right_index:]
+    result = result + left[left_index:]
+    result = result + right[right_index:]
     return result
 
 
 def merge_sort(array):
-    """Merge sort algorithm implementation."""
-
-    if len(array) <= 1:  # base case
+    if len(array) <= 1:
         return array
-
+    else:
     # divide array in half and merge sort recursively
-    half = len(array) // 2
-    left = merge_sort(array[:half])
-    right = merge_sort(array[half:])
-
+        half = len(array) // 2
+        left = merge_sort(array[:half])
+        right = merge_sort(array[half:])
     return merge(left, right)
 print("fin", merge_sort(arr1))
 
